@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import TopBanner from "../../../public/images/headertop-banner.avif";
+import TopBanner from "../../../public/images/headertop-banner_converted.png";
 
 const Header = () => {
   return (

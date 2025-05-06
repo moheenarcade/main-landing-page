@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from "next/image";
-import MainBanner from "../../../public/images/secondbanner.avif";
-import Laregbanner2 from "../../../public/images/largebanner2.avif";
+import MainBanner from "../../../public/images/secondbanner_converted.png";
+import Laregbanner2 from "../../../public/images/largebanner2_converted.png";
 
 const LargeBanner = () => {
 
