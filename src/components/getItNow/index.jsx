@@ -55,7 +55,7 @@ const GetInNow = ({ product_sku }) => {
     return (
         <div className='get-it-now-main rounded-xl p-3 lg:p-6 my-0 lg:my-12'>
             <div className="clock-timer relative z-[9999] py-6 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-6 justify-center items-center">
-                <p className='text-[white] text-xl text-center md:text-start lg:text-4xl font-[500]'>{t("Get_it_now_before_it")} </p>
+                <p className='text-[white] text-xl text-center md:text-start lg:text-3xl font-[500]'>{t("Get_it_now_before_it")} </p>
                 <div className="clock-sec">
                     <CountdownTimer initialHours={0} initialMinutes={5} initialSeconds={0} />
                 </div>
@@ -97,7 +97,6 @@ const GetInNow = ({ product_sku }) => {
             <div className="pt-6 lg:pt-20 text-start lg:text-center">
                 <p className='text-[20px] lg:text-3xl font-[800] lg:font-[700] cairo-family'>{t('To_order_please_fill_in_the_boxes_below')}</p>
                 <div className="price-selection mt-2 lg:mt-4">
-
                     {product?.discount_prices?.map((option, index) => {
                         const quantity = option.quantity;
                         const totalPrice = parseFloat(option.price);
@@ -109,11 +108,11 @@ const GetInNow = ({ product_sku }) => {
                             <div
                                 key={index}
                                 onClick={() => setSelectedIndex(index)}
-                                className={`group single-price mb-4 cursor-pointer relative flex flex-col md:flex-row justify-between items-center border-[2px] rounded-xl py-3 px-3 lg:px-8 transition-all duration-[0.3s] ease-in-out
+                                className={`group single-price mb-4 cursor-pointer relative flex flex-row justify-between items-center border-[2px] rounded-xl py-5 lg:py-4 px-5 lg:px-8 transition-all duration-[0.3s] ease-in-out
                 ${selectedIndex === index ? 'border-[#a8620a] bg-gray-100 scale-[1.01]' : 'border-[#acb9d2] hover:bg-gray-100 hover:scale-[1.01] hover:border-black'}
             `}
                             >
-                                <div class="rPyoc block md:hidden text-[12px]" bis_skin_checked="1"><font><font>Most requested</font></font><p><span class="qC_pa"></span><span class="oy8sJ"></span></p></div>
+                                <div className="rPyoc text-[12px]" bis_skin_checked="1"><font><font>Most requested</font></font><p><span className="qC_pa"></span><span className="oy8sJ"></span></p></div>
                                 <div className="flex items-start w-full lg:items-center gap-4">
                                     <div className={`checkbox h-6 w-6 rounded-full border-[2px] flex items-center justify-center
                     ${selectedIndex === index ? 'border-[#a8620a] bg-[#a8620a]' : 'border-[#acb9d2] group-hover:border-[#191e2a]'}
@@ -122,24 +121,24 @@ const GetInNow = ({ product_sku }) => {
                                     </div>
                                     <div className="">
                                         <p className={`text-md text-start md:text-xl font-[600] transition-all
-                    ${selectedIndex === index ? 'text-[#191e2a]' : 'text-[#57637a] font-[600] group-hover:text-[#191e2a]'}
+                    ${selectedIndex === index ? 'text-[#191e2a]' : 'text-[#191e2a] group-hover:text-[#191e2a]'}
                 `}>
                                             Buy {quantity} - Save {discountPercent}%
                                         </p>
-                                        <div className="block md:hidden">
-                                            <div className={`text-sm md:text-2xl gap-4 lg:gap-0 flex flex-row lg:flex-col justify-start md:justify-end italic transition-all
-                ${selectedIndex === index ? 'text-[#191e2a] font-bold' : 'text-[#57637a] group-hover:text-[#191e2a]'}
+                                        {/* <div className="block md:hidden">
+                                            <div className={`text-sm md:text-2xl font-[600] gap-4 lg:gap-0 flex flex-row lg:flex-col justify-start md:justify-end italic transition-all
+                ${selectedIndex === index ? 'text-[#57637a]' : 'text-[#57637a] group-hover:text-[#57637a]'}
             `}>
                                                 <p className='whitespace-nowrap'>{totalPrice.toFixed(2)} {currencyCode}</p>
                                                 <p className="line-through whitespace-nowrap italic">{originalTotal.toFixed(2)} {currencyCode}</p>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                 </div>
-                                <div className="hidden md:block">
-                                    <div className={`text-sm md:text-2xl gap-4 lg:gap-0 flex flex-row lg:flex-col justify-start md:justify-end italic transition-all
-                ${selectedIndex === index ? 'text-black font-[700]' : 'text-[#626262] group-hover:text-black'}
+                                <div className="block">
+                                    <div className={`text-sm md:text-2xl gap-1 font-[600] lg:gap-0 flex flex-col justify-start md:justify-end italic transition-all
+                ${selectedIndex === index ? 'text-[#57637a] ' : 'text-[#57637a] group-hover:text-[#57637a]'}
             `}>
                                         <p className='whitespace-nowrap'>{totalPrice.toFixed(2)} {currencyCode}</p>
                                         <p className="line-through whitespace-nowrap italic">{originalTotal.toFixed(2)} {currencyCode}</p>
