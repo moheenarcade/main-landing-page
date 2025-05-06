@@ -1,4 +1,12 @@
 {
-    "Get_it_now_before_it": "Get it now before it runs out!"
+    "Get_it_now_before_it": "Get it now before it runs out!",
+    "Now_and_for_a_limited_time": "الآن ولفترة محدودة، استفد من",
+    "discount_and_free_delivery" : "الخصم والتوصيل المجاني",
+    "Tax_included_this_offer_is_limited" : "شامل الضريبة، هذا العرض محدود",
+    "To_order_please_fill_in_the_boxes_below" : "للطلب، يرجى ملء المربعات أدناه",
+    "Choose_the_appropriate_offer" : "اختر العرض المناسب",
+    "Confirm_Order" : "تأكيد الطلب"
+
+
 
 }

@@ -7,7 +7,7 @@ const LargeBanner = () => {
 
     return (
         <>
-            <div className="main-banner">
+            <div className="main-banner pt-4 lg:pt-0">
                 <Image className="w-full h-auto" src={MainBanner} alt="main banner" />
             </div>
             <div className="main-banner">

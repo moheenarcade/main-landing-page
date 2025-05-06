@@ -5,6 +5,8 @@ import Select from "react-select";
 import { getCityState, getSettings } from "../../lib/api";
 import { ToastContainer, toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from "../../hooks/useTranslation";
+
 const getCustomStyles = (formErrors, field) => ({
     control: (provided, state) => ({
         ...provided,
@@ -28,6 +30,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
     console.log("Product ID:", product?.product_id);
     console.log("Quantity:", selectedQuantity);
     console.log("Total Price:", selectedTotalPrice);
+    const { t } = useTranslation();
     const router = useRouter();
     const [states, setStates] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -218,9 +221,9 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
     return (
         <div className="form-sec pt-6 lg:pt-12">
             <ToastContainer />
-            <p className='text-start mb-4 font-[500] text-xl md:text-2xl'>Choose the appropriate offer</p>
+            <p className='text-start mb-4 font-[500] text-xl md:text-2xl'>{t('Choose_the_appropriate_offer')}</p>
             <form onSubmit={handleSubmit}>
-                <div className="mb-6" ref={formRefs.fullName}>
+                <div className="mb-3 lg:mb-6" ref={formRefs.fullName}>
                     <input
                         name="fullName"
                         value={formValues.fullName}
@@ -232,7 +235,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
                     {formErrors.fullName && <p className="text-red-500 text-sm mt-1">{formErrors.fullName}</p>}
                 </div>
 
-                <div className="mb-6" ref={formRefs.email}>
+                <div className="mb-3 lg:mb-6" ref={formRefs.email}>
                     <input
                         name="email"
                         value={formValues.email}
@@ -243,7 +246,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
                     />
                     {formErrors.email && <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>}
                 </div>
-                <div className="mb-6 flex flex-col">
+                <div className="mb-3 lg:mb-6 flex flex-col">
                     <div className="flex" ref={formRefs.phone}>
                         <input
                             readOnly
@@ -265,7 +268,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
                     </div>
                     {formErrors.phone && <p className="text-red-500 text-sm mt-1">{formErrors.phone}</p>}
                 </div>
-                <div className="mb-6" ref={formRefs.state}>
+                <div className="mb-3 lg:mb-6" ref={formRefs.state}>
                     <Select
                         className='select-state'
                         styles={getCustomStyles(formErrors, 'state')}
@@ -285,7 +288,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
                     {formErrors.state && <p className="text-red-500 text-sm mt-1">{formErrors.state}</p>}
                 </div>
 
-                <div className="mb-6" ref={formRefs.city}>
+                <div className="mb-3 lg:mb-6" ref={formRefs.city}>
                     <Select
                         className='select-zone'
                         styles={getCustomStyles(formErrors, 'city')}
@@ -302,7 +305,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
                     {formErrors.city && <p className="text-red-500 text-sm mt-1">{formErrors.city}</p>}
                 </div>
 
-                <div className="mb-6" ref={formRefs.address}>
+                <div className="mb-3 lg:mb-6" ref={formRefs.address}>
                     <textarea
                         name="address"
                         value={formValues.address}
@@ -319,7 +322,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
                     className='w-full cursor-pointer py-3 px-12 bg-[#000] hover:text-black hover:bg-white border-tarnsparent hover:border-black border-2 rounded-full text-white text-xl tarnsition-all duration-[0.3s] ease-in-out'
                     disabled={isSubmitting}
                 >
-                    {isSubmitting ? 'Processing...' : 'Confirm Order'}
+               {isSubmitting ? 'Processing...' : t('Confirm_Order')}
                 </button>
             </form>
         </div>

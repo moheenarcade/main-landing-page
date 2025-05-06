@@ -96,7 +96,7 @@ export default function CountdownTimer() {
   const seconds = formatTime(timeLeft % 60);
 
   return (
-    <div className="text-center text-4xl font-mono font-bold text-[#efba1e] w-fit mx-auto">
+    <div className="text-center text-4xl font-mono font-bold text-[white] w-fit mx-auto">
       {hours}:{minutes}:{seconds}
     </div>
   );

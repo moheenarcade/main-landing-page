@@ -53,9 +53,9 @@ const GetInNow = ({ product_sku }) => {
     }, [product_sku]);
 
     return (
-        <div className='get-it-now-main rounded-xl p-3 lg:p-6 my-6 lg:my-12'>
-            <div className="clock-timer relative z-[9999] bg-[#000] py-6 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-6 justify-center items-center">
-                <p className='text-[#efba1e] text-2xl text-center md:text-start lg:text-4xl font-[500]'>{t("Get_it_now_before_it")} </p>
+        <div className='get-it-now-main rounded-xl p-3 lg:p-6 my-0 lg:my-12'>
+            <div className="clock-timer relative z-[9999] py-6 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-6 justify-center items-center">
+                <p className='text-[white] text-xl text-center md:text-start lg:text-4xl font-[500]'>{t("Get_it_now_before_it")} </p>
                 <div className="clock-sec">
                     <CountdownTimer initialHours={0} initialMinutes={5} initialSeconds={0} />
                 </div>
@@ -70,12 +70,15 @@ const GetInNow = ({ product_sku }) => {
 
                 return (
                     <>
-                        <div className="discount-price relative border-t-[1px] mt-6 flex items-center justify-center md:justify-between">
-                            <div className="flex flex-col md:flex-row justify-center items-center py-6 gap-2 md:gap-6">
-                                <p className='text-3xl font-[600]'>{salePrice.toFixed(2)} {currencyCode}</p>
-                                <p className='text-3xl line-through text-gray-500 italic'>{originalPrice.toFixed(2)} {currencyCode}</p>
+                        <div className="discount-price relative border-y-[1px] mt-6 flex items-center justify-center md:justify-between">
+                            <div className="flex flex-row justify-start items-start ml-0 w-full py-4 lg:py-6 gap-2 md:gap-6 text-[#57637a] ">
+                                <p className='text-xl lg:text-3xl font-[700]'>{salePrice.toFixed(2)} {currencyCode}</p>
+                                <p className='text-xl lg:text-3xl line-through font-[500] text-[#57637a]'>{originalPrice.toFixed(2)} {currencyCode}</p>
                             </div>
-                            <div className="hidden md:block badges absolute top-[-140px] lg:-top-36 right-6 mx-auto">
+                            <div className="dicousnt-mobile-badge text-white bg-red-600 py-1 px-3 rounded-lg font-[600] block md:hidden">
+                            -{discountPercent}%
+                            </div>
+                            <div className="hidden md:block badges absolute top-[-140px] lg:-top-36 right-6 mx-auto ">
                                 <p className='pt-12'>
                                     <span className="firstLine">GET UP TO</span><br />
                                     <span className="secondLine">{discountPercent}%</span><br />
@@ -83,17 +86,17 @@ const GetInNow = ({ product_sku }) => {
                                 </p>
                             </div>
                         </div>
-                        <div className="dicount-desc text-center md:text-start w-full md:w-[50%]">
-                            <p className='text-md md:text-xl'>Now and for a limited time, take advantage of a {discountPercent}% discount and free delivery</p>
-                            <p className='text-md md:text-xl'> Tax included, this offer is limited</p>
+                        <div className="dicount-desc text-start font-[700] w-full md:w-[50%] pt-4">
+                            <p className='text-[15px] md:text-xl'>{t('Now_and_for_a_limited_time')} {discountPercent}% {t('discount_and_free_delivery')}</p>
+                            <p className='text-[15px] md:text-xl text-red-600'>{t('Tax_included_this_offer_is_limited')}</p>
                         </div>
                     </>
                 );
             })()}
 
-            <div className="pt-6 lg:pt-20 text-center">
-                <p className='text-xl lg:text-3xl font-[600]'>To order, please fill in the boxes below</p>
-                <div className="price-selection mt-4">
+            <div className="pt-6 lg:pt-20 text-start lg:text-center">
+                <p className='text-lg lg:text-3xl font-[800] lg:font-[700]'>{t('To_order_please_fill_in_the_boxes_below')}</p>
+                <div className="price-selection mt-2 lg:mt-4">
 
                     {product?.discount_prices?.map((option, index) => {
                         const quantity = option.quantity;

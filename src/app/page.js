@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="container mx-auto px-6 lg:px-20 xl:px-62">
+      <div className="container mx-auto px-0 lg:px-20 xl:px-62">
         <HeroBanner products={products} />
         <GetInNow product_sku={products[0]?.product_sku} />
         <LargeBanner products={products} />

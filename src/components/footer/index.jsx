@@ -1,7 +1,9 @@
+import Image from 'next/image';
 import React from 'react'
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import PaymentCard from "../../../public/images/footer-cards.svg"
 
 
 const Footer = () => {
@@ -20,6 +22,10 @@ const Footer = () => {
         <li className='cursor-pointer hover:scale-[1.05] transition-all duration-[0.3s] ease-in-out'><FaInstagram /></li>
         <li className='cursor-pointer hover:scale-[1.05] transition-all duration-[0.3s] ease-in-out'><FaFacebook /></li>
       </ul>
+      <div className="flex flex-wrap gap-4 lg:gap-12 mt-12 justify-center lg:justify-between items-center text-white px-6 lg:px-62">
+        <Image src={PaymentCard} alt='payment card' />
+        <p className='text-sm'>Copyright © 2025. By BioNakheel</p>
+      </div>
     </div>
   )
 }
