@@ -58,17 +58,17 @@ const Faqs = () => {
       </div>
 
       <div className="mt-12 lg:mt-18 flex gap-4 flex-wrap justify-between">
-        <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full md:w-[23%] xl:w-[20%]">
+        <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full md:w-[23%]  2xl:w-[23%]">
           <TiMessages className='text-5xl' />
           <p className='text-lg md:text-sm lg:text-lg font-[500] text-center'>Customer Service</p>
         </div>
-        <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full  md:w-[23%] xl:w-[20%]">
+        <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full  md:w-[23%] 2xl:w-[23%]">
           <GrDeliver className='text-5xl' />
           <p className='text-lg md:text-sm lg:text-lg font-[500] text-center'>Free delivery</p>
-        </div> <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full md:w-[23%] xl:w-[20%]">
+        </div> <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full md:w-[23%] 2xl:w-[23%]">
           <RiSecurePaymentLine className='text-5xl' />
           <p className='text-lg md:text-sm lg:text-lg font-[500] text-center'>100% guarantee</p>
-        </div> <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full  md:w-[23%] xl:w-[20%]">
+        </div> <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full  md:w-[23%] 2xl:w-[23%]">
           <GiCash className='text-5xl' />
           <p className='text-lg md:text-sm lg:text-lg font-[500] text-center'>Cash on delivery</p>
         </div>
