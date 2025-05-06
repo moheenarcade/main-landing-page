@@ -1,3 +1,4 @@
+
 // 'use client';
 
 // import { useEffect, useState } from 'react';
@@ -8,28 +9,32 @@
 //   const [timeLeft, setTimeLeft] = useState(TOTAL_SECONDS);
 
 //   useEffect(() => {
+//     const initializeEndTime = () => {
+//       const newEndTime = Date.now() + TOTAL_SECONDS * 1000;
+//       localStorage.setItem('countdownEndTime', newEndTime.toString());
+//       return newEndTime;
+//     };
 
-//     let endTime = localStorage.getItem('countdownEndTime');
-
-//     if (!endTime) {
-//       const now = Date.now();
-//       endTime = now + TOTAL_SECONDS * 1000;
-//       localStorage.setItem('countdownEndTime', endTime);
-//     } else {
-//       endTime = parseInt(endTime, 10);
+//     let endTime = parseInt(localStorage.getItem('countdownEndTime') || '', 10);
+//     if (!endTime || isNaN(endTime)) {
+//       endTime = initializeEndTime();
 //     }
 
 //     const updateTimer = () => {
 //       const now = Date.now();
-//       const diff = Math.max(Math.floor((endTime - now) / 1000), 0);
+//       let diff = Math.floor((endTime - now) / 1000);
+
+//       if (diff <= 0) {
+//         endTime = initializeEndTime();
+//         diff = TOTAL_SECONDS;
+//       }
+
 //       setTimeLeft(diff);
 //     };
 
 //     updateTimer();
 
-//     const interval = setInterval(() => {
-//       updateTimer();
-//     }, 1000);
+//     const interval = setInterval(updateTimer, 1000);
 
 //     return () => clearInterval(interval);
 //   }, []);
@@ -41,12 +46,11 @@
 //   const seconds = formatTime(timeLeft % 60);
 
 //   return (
-//     <div className="text-center text-4xl font-mono font-bold text-[#efba1e] w-fit mx-auto">
+//     <div className="text-center text-4xl font-mono font-bold text-[white] w-fit mx-auto">
 //       {hours}:{minutes}:{seconds}
 //     </div>
 //   );
 // }
-
 
 
 'use client';
@@ -83,9 +87,7 @@ export default function CountdownTimer() {
     };
 
     updateTimer();
-
     const interval = setInterval(updateTimer, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -96,8 +98,34 @@ export default function CountdownTimer() {
   const seconds = formatTime(timeLeft % 60);
 
   return (
-    <div className="text-center text-4xl font-mono font-bold text-[white] w-fit mx-auto">
-      {hours}:{minutes}:{seconds}
+    <div className="flex justify-center items-center gap-4 text-white">
+      {/* HOURS */}
+      <div className="flex flex-col items-center">
+        <div className=" px-4 py-2 rounded-md text-4xl font-bold font-mono shadow-lg">
+          {hours}
+        </div>
+        <span className="mt-2 text-sm uppercase tracking-widest">Hours</span>
+      </div>
+
+      <div className="text-5xl font-bold mb-[40px]">:</div>
+
+      {/* MINUTES */}
+      <div className="flex flex-col items-center">
+        <div className=" px-4 py-2 rounded-md text-4xl font-bold font-mono shadow-lg">
+          {minutes}
+        </div>
+        <span className="mt-2 text-sm uppercase tracking-widest">Minutes</span>
+      </div>
+
+      <div className="text-5xl font-bold mb-[40px]">:</div>
+
+      {/* SECONDS */}
+      <div className="flex flex-col items-center">
+        <div className="px-4 py-2 rounded-md text-4xl font-bold font-mono shadow-lg">
+          {seconds}
+        </div>
+        <span className="mt-2 text-sm uppercase tracking-widest">Seconds</span>
+      </div>
     </div>
   );
 }

@@ -70,10 +70,10 @@ const GetInNow = ({ product_sku }) => {
 
                 return (
                     <>
-                        <div className="discount-price relative border-y-[1px] mt-6 flex items-center justify-center md:justify-between">
-                            <div className="flex flex-row justify-start items-start ml-0 w-full py-4 lg:py-6 gap-2 md:gap-6 text-[#57637a] ">
-                                <p className='text-xl lg:text-3xl font-[700]'>{salePrice.toFixed(2)} {currencyCode}</p>
-                                <p className='text-xl lg:text-3xl line-through font-[500] text-[#57637a]'>{originalPrice.toFixed(2)} {currencyCode}</p>
+                        <div className="discount-price relative border-y-[1px] border-y-[#d6dce9] mt-6 flex items-center justify-center md:justify-between">
+                            <div className="flex flex-row justify-start items-start ml-0 w-full py-4 lg:py-6 gap-2 md:gap-6">
+                                <p className='text-xl lg:text-3xl font-[700] text-[#57637a]'>{salePrice.toFixed(2)} {currencyCode}</p>
+                                <p className='text-xl lg:text-3xl line-through font-[500] text-[#939cab]'>{originalPrice.toFixed(2)} {currencyCode}</p>
                             </div>
                             <div className="dicousnt-mobile-badge text-white bg-red-600 py-1 px-3 rounded-lg font-[600] block md:hidden">
                                 -{discountPercent}%
@@ -88,14 +88,14 @@ const GetInNow = ({ product_sku }) => {
                         </div>
                         <div className="dicount-desc text-start font-[700] w-full md:w-[50%] pt-4">
                             <p className='text-[15px] md:text-xl'>{t('Now_and_for_a_limited_time')} {discountPercent}% {t('discount_and_free_delivery')}</p>
-                            <p className='text-[15px] md:text-xl text-red-600'>{t('Tax_included_this_offer_is_limited')}</p>
+                            <p className='text-[15px] md:text-xl text-[#ce0606]'>{t('Tax_included_this_offer_is_limited')}</p>
                         </div>
                     </>
                 );
             })()}
 
             <div className="pt-6 lg:pt-20 text-start lg:text-center">
-                <p className='text-lg lg:text-3xl font-[800] lg:font-[700]'>{t('To_order_please_fill_in_the_boxes_below')}</p>
+                <p className='text-[20px] lg:text-3xl font-[800] lg:font-[700] cairo-family'>{t('To_order_please_fill_in_the_boxes_below')}</p>
                 <div className="price-selection mt-2 lg:mt-4">
 
                     {product?.discount_prices?.map((option, index) => {
@@ -110,25 +110,25 @@ const GetInNow = ({ product_sku }) => {
                                 key={index}
                                 onClick={() => setSelectedIndex(index)}
                                 className={`group single-price mb-4 cursor-pointer relative flex flex-col md:flex-row justify-between items-center border-[2px] rounded-xl py-3 px-3 lg:px-8 transition-all duration-[0.3s] ease-in-out
-                ${selectedIndex === index ? 'border-black bg-gray-100 scale-[1.01]' : 'border-[#838383] hover:bg-gray-100 hover:scale-[1.01] hover:border-black'}
+                ${selectedIndex === index ? 'border-[#a8620a] bg-gray-100 scale-[1.01]' : 'border-[#acb9d2] hover:bg-gray-100 hover:scale-[1.01] hover:border-black'}
             `}
                             >
                                 <div class="rPyoc block md:hidden text-[12px]" bis_skin_checked="1"><font><font>Most requested</font></font><p><span class="qC_pa"></span><span class="oy8sJ"></span></p></div>
                                 <div className="flex items-start w-full lg:items-center gap-4">
                                     <div className={`checkbox h-6 w-6 rounded-full border-[2px] flex items-center justify-center
-                    ${selectedIndex === index ? 'border-black bg-black' : 'border-[#838383] group-hover:border-black'}
+                    ${selectedIndex === index ? 'border-[#a8620a] bg-[#a8620a]' : 'border-[#acb9d2] group-hover:border-[#191e2a]'}
                 `}>
                                         {selectedIndex === index && <div className="h-3 w-3 bg-white rounded-full"></div>}
                                     </div>
                                     <div className="">
                                         <p className={`text-md text-start md:text-xl font-[600] transition-all
-                    ${selectedIndex === index ? 'text-black' : 'text-[#626262] font-[600] group-hover:text-black'}
+                    ${selectedIndex === index ? 'text-[#191e2a]' : 'text-[#57637a] font-[600] group-hover:text-[#191e2a]'}
                 `}>
                                             Buy {quantity} - Save {discountPercent}%
                                         </p>
                                         <div className="block md:hidden">
                                             <div className={`text-sm md:text-2xl gap-4 lg:gap-0 flex flex-row lg:flex-col justify-start md:justify-end italic transition-all
-                ${selectedIndex === index ? 'text-black font-bold' : 'text-[#626262] group-hover:text-black'}
+                ${selectedIndex === index ? 'text-[#191e2a] font-bold' : 'text-[#57637a] group-hover:text-[#191e2a]'}
             `}>
                                                 <p className='whitespace-nowrap'>{totalPrice.toFixed(2)} {currencyCode}</p>
                                                 <p className="line-through whitespace-nowrap italic">{originalTotal.toFixed(2)} {currencyCode}</p>

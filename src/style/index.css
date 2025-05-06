@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -17,6 +18,10 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: "Open Sans", sans-serif;
+}
+
+.cairo-family {
+  font-family: "Cairo", sans-serif;
 }
 
 .get-it-now-main {
@@ -216,7 +221,7 @@ body {
   font-weight: 600;
   color: white;
   text-transform: uppercase;
-  background-color: black;
+  background-color: #a8620a;
 }
 
 .rPyoc>p .qC_pa {
@@ -228,7 +233,7 @@ body {
   position: absolute;
   width: 0;
   height: 0;
-  border-bottom-color: black;
+  border-bottom-color: #a8620a;
   border-bottom-width: 8px;
   border-bottom-style: solid;
   display: block;
@@ -245,7 +250,7 @@ body {
   position: absolute;
   width: 0;
   height: 0;
-  border-bottom-color: black;
+  border-bottom-color: #a8620a;
   border-bottom-width: 8px;
   border-bottom-style: solid;
   display: block;
