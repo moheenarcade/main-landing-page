@@ -51,7 +51,7 @@ const GetInNow = ({ product_sku }) => {
     return (
         <div className='get-it-now-main rounded-xl p-3 lg:p-6 my-6 lg:my-12'>
             <div className="clock-timer relative z-[9999] bg-[#000] py-6 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-6 justify-center items-center">
-                <p className='text-[#efba1e] text-2xl text-center md:text-start lg:text-4xl font-[300]'>Get it now before it runs out! </p>
+                <p className='text-[#efba1e] text-2xl text-center md:text-start lg:text-4xl font-[500]'>Get it now before it runs out! </p>
                 <div className="clock-sec">
                     <CountdownTimer initialHours={0} initialMinutes={5} initialSeconds={0} />
                 </div>
