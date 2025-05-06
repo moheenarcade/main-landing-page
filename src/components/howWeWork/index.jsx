@@ -7,7 +7,7 @@ import { GiCash } from "react-icons/gi";
 const HowWeWork = () => {
 
     return (
-        <div className='container mx-auto px-6 lg:px-20 2xl:px-32 lg:mt-[300px] pb-20'>
+        <div className='container mx-auto px-6 lg:px-20 xl:px-62 lg:mt-[300px] xl:mt-[80px] 2xl:mt-[240px] pb-20'>
             <h3 className='text-2xl lg:text-4xl text-black text-center font-[500] mt-4'>How we work</h3>
             <p className='text-center text-lg lg:text-xl text-[#57637a] pt-2'>To avoid any problems in processing customer requests, we follow these clear steps.</p>
 
