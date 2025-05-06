@@ -4,6 +4,8 @@ import CountdownTimer from '../countdownTimer'
 import Faqs from '../faqs';
 import { getProductBySlug } from '../../lib/api';
 import BuyForm from '../buyForm';
+import { useTranslation } from "../../hooks/useTranslation";
+import { useLanguage } from "../../context/LanguageContext";
 
 const GetInNow = ({ product_sku }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -11,6 +13,8 @@ const GetInNow = ({ product_sku }) => {
     const [loading, setLoading] = useState(true);
     console.log('product_sku here', product)
     const [currencyCode, setCurrencyCode] = useState('OMR');
+    const { t } = useTranslation();
+    const { language, toggleLanguage } = useLanguage();
 
     useEffect(() => {
         const storeSettingRaw = localStorage.getItem('storeSettings');
@@ -51,7 +55,7 @@ const GetInNow = ({ product_sku }) => {
     return (
         <div className='get-it-now-main rounded-xl p-3 lg:p-6 my-6 lg:my-12'>
             <div className="clock-timer relative z-[9999] bg-[#000] py-6 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-6 justify-center items-center">
-                <p className='text-[#efba1e] text-2xl text-center md:text-start lg:text-4xl font-[500]'>Get it now before it runs out! </p>
+                <p className='text-[#efba1e] text-2xl text-center md:text-start lg:text-4xl font-[500]'>{t("Get_it_now_before_it")} </p>
                 <div className="clock-sec">
                     <CountdownTimer initialHours={0} initialMinutes={5} initialSeconds={0} />
                 </div>
@@ -69,7 +73,7 @@ const GetInNow = ({ product_sku }) => {
                         <div className="discount-price relative border-t-[1px] mt-6 flex items-center justify-center md:justify-between">
                             <div className="flex flex-col md:flex-row justify-center items-center py-6 gap-2 md:gap-6">
                                 <p className='text-3xl font-[600]'>{salePrice.toFixed(2)} {currencyCode}</p>
-                                <p className='text-3xl line-through'>{originalPrice.toFixed(2)} {currencyCode}</p>
+                                <p className='text-3xl line-through text-gray-500 italic'>{originalPrice.toFixed(2)} {currencyCode}</p>
                             </div>
                             <div className="hidden md:block badges absolute top-[-140px] lg:-top-36 right-6 mx-auto">
                                 <p className='pt-12'>
@@ -80,15 +84,15 @@ const GetInNow = ({ product_sku }) => {
                             </div>
                         </div>
                         <div className="dicount-desc text-center md:text-start w-full md:w-[50%]">
-                            <p className='text-lg md:text-xl'>Now and for a limited time, take advantage of a {discountPercent}% discount and free delivery</p>
-                            <p className='text-lg md:text-xl'> Tax included, this offer is limited</p>
+                            <p className='text-md md:text-xl'>Now and for a limited time, take advantage of a {discountPercent}% discount and free delivery</p>
+                            <p className='text-md md:text-xl'> Tax included, this offer is limited</p>
                         </div>
                     </>
                 );
             })()}
 
             <div className="pt-6 lg:pt-20 text-center">
-                <p className='text-2xl lg:text-3xl font-[600]'>To order, please fill in the boxes below</p>
+                <p className='text-xl lg:text-3xl font-[600]'>To order, please fill in the boxes below</p>
                 <div className="price-selection mt-4">
 
                     {product?.discount_prices?.map((option, index) => {
@@ -114,28 +118,28 @@ const GetInNow = ({ product_sku }) => {
                                     </div>
                                     <div className="">
                                         <p className={`text-md text-start md:text-xl font-[600] transition-all
-                    ${selectedIndex === index ? 'text-black' : 'text-[#626262] group-hover:text-black'}
+                    ${selectedIndex === index ? 'text-black' : 'text-[#626262] font-[600] group-hover:text-black'}
                 `}>
                                             Buy {quantity} - Save {discountPercent}%
                                         </p>
                                         <div className="block md:hidden">
-                                        <div className={`text-sm md:text-2xl gap-4 lg:gap-0 flex flex-row lg:flex-col justify-start md:justify-end italic transition-all
+                                            <div className={`text-sm md:text-2xl gap-4 lg:gap-0 flex flex-row lg:flex-col justify-start md:justify-end italic transition-all
                 ${selectedIndex === index ? 'text-black font-bold' : 'text-[#626262] group-hover:text-black'}
             `}>
-                                            <p className='whitespace-nowrap'>{totalPrice.toFixed(2)} {currencyCode}</p>
-                                            <p className="line-through whitespace-nowrap italic">{originalTotal.toFixed(2)} {currencyCode}</p>
+                                                <p className='whitespace-nowrap'>{totalPrice.toFixed(2)} {currencyCode}</p>
+                                                <p className="line-through whitespace-nowrap italic">{originalTotal.toFixed(2)} {currencyCode}</p>
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
 
                                 </div>
                                 <div className="hidden md:block">
-                                <div className={`text-sm md:text-2xl gap-4 lg:gap-0 flex flex-row lg:flex-col justify-start md:justify-end italic transition-all
-                ${selectedIndex === index ? 'text-black font-bold' : 'text-[#626262] group-hover:text-black'}
+                                    <div className={`text-sm md:text-2xl gap-4 lg:gap-0 flex flex-row lg:flex-col justify-start md:justify-end italic transition-all
+                ${selectedIndex === index ? 'text-black font-[700]' : 'text-[#626262] group-hover:text-black'}
             `}>
-                                    <p className='whitespace-nowrap'>{totalPrice.toFixed(2)} {currencyCode}</p>
-                                    <p className="line-through whitespace-nowrap italic">{originalTotal.toFixed(2)} {currencyCode}</p>
-                                </div>
+                                        <p className='whitespace-nowrap'>{totalPrice.toFixed(2)} {currencyCode}</p>
+                                        <p className="line-through whitespace-nowrap italic">{originalTotal.toFixed(2)} {currencyCode}</p>
+                                    </div>
                                 </div>
                             </div>
                         );

@@ -42,9 +42,9 @@ const Faqs = () => {
           >
             <button
               onClick={() => toggleFaq(index)}
-              className="w-full text-left px-5 py-4 flex justify-between items-center focus:outline-none"
+              className="w-full text-left px-3 md:px-5 py-3 md:py-4 flex justify-between items-center focus:outline-none"
             >
-              <span className="text-lg md:text-sm lg:text-lg font-[500]">{faq.question}</span>
+              <span className="text-md md:text-sm lg:text-lg font-[500]">{faq.question}</span>
               <span className="text-xl">{openIndex === index ? "−" : "+"}</span>
             </button>
             <div

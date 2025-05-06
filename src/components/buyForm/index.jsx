@@ -24,7 +24,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
     const [selectedState, setSelectedState] = useState(null);
     const [selectedCity, setSelectedCity] = useState(null);
     const [cityOptions, setCityOptions] = useState([]);
-    console.log(product , "product in form");
+    console.log(product, "product in form");
     console.log("Product ID:", product?.product_id);
     console.log("Quantity:", selectedQuantity);
     console.log("Total Price:", selectedTotalPrice);
@@ -128,7 +128,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-    
+
         const errors = {};
         if (!formValues.fullName.trim()) errors.fullName = 'Full name is required';
         if (!formValues.email.trim()) errors.email = 'Email is required';
@@ -140,9 +140,9 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
         if (!selectedState) errors.state = 'State is required';
         if (!selectedCity) errors.city = 'City is required';
         if (!formValues.address.trim()) errors.address = 'Address is required';
-    
+
         setFormErrors(errors);
-    
+
         if (Object.keys(errors).length > 0) {
             const firstErrorKey = Object.keys(errors)[0];
             formRefs[firstErrorKey]?.current?.scrollIntoView({
@@ -152,7 +152,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
             setIsSubmitting(false);
             return;
         }
-    
+
         const payload = {
             customer_name: formValues.fullName,
             customer_email: formValues.email,
@@ -166,7 +166,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
             product_name: product.name,
             product_option_id: product?.options?.[0]?.product_option_id,
             product_option_label: product?.options?.[0]?.option_label,
-            product_option_color: product?.product_colors?.[0]?.color|| '',
+            product_option_color: product?.product_colors?.[0]?.color || '',
             product_sku: product?.product_sku,
             product_price: selectedTotalPrice,
             product_quantity: selectedQuantity,
@@ -181,12 +181,12 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
                 },
                 body: JSON.stringify(payload),
             });
-    
+
             if (!res.ok) {
                 const errData = await res.json();
                 throw new Error(errData.message || 'Failed to place order');
             }
-    
+
             const result = await res.json();
             console.log("Order placed successfully:", result);
             if (result.success) {
@@ -316,7 +316,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
 
                 <button
                     type="submit"
-                    className='w-full cursor-pointer py-3 px-12 bg-[#000] rounded-lg text-white text-xl'
+                    className='w-full cursor-pointer py-3 px-12 bg-[#000] hover:text-black hover:bg-white border-tarnsparent hover:border-black border-2 rounded-full text-white text-xl tarnsition-all duration-[0.3s] ease-in-out'
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? 'Processing...' : 'Confirm Order'}

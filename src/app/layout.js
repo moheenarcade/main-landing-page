@@ -5,6 +5,7 @@ import Header from "../components/header";
 import React from "react";
 import "../style/index.css";
 import { usePathname } from "next/navigation";
+import { LanguageProvider } from "../context/LanguageContext";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -15,9 +16,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+      <LanguageProvider>
         {shouldShowHeader && <Header />}
         {children}
         <Footer />
+      </LanguageProvider>
       </body>
     </html>
   );
