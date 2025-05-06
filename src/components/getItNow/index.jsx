@@ -76,7 +76,7 @@ const GetInNow = ({ product_sku }) => {
                                 <p className='text-xl lg:text-3xl line-through font-[500] text-[#57637a]'>{originalPrice.toFixed(2)} {currencyCode}</p>
                             </div>
                             <div className="dicousnt-mobile-badge text-white bg-red-600 py-1 px-3 rounded-lg font-[600] block md:hidden">
-                            -{discountPercent}%
+                                -{discountPercent}%
                             </div>
                             <div className="hidden md:block badges absolute top-[-140px] lg:-top-36 right-6 mx-auto ">
                                 <p className='pt-12'>
@@ -109,10 +109,11 @@ const GetInNow = ({ product_sku }) => {
                             <div
                                 key={index}
                                 onClick={() => setSelectedIndex(index)}
-                                className={`group single-price mb-4 cursor-pointer flex flex-col md:flex-row justify-between items-center border-[2px] rounded-xl py-3 px-3 lg:px-8 transition-all duration-[0.3s] ease-in-out
+                                className={`group single-price mb-4 cursor-pointer relative flex flex-col md:flex-row justify-between items-center border-[2px] rounded-xl py-3 px-3 lg:px-8 transition-all duration-[0.3s] ease-in-out
                 ${selectedIndex === index ? 'border-black bg-gray-100 scale-[1.01]' : 'border-[#838383] hover:bg-gray-100 hover:scale-[1.01] hover:border-black'}
             `}
                             >
+                                <div class="rPyoc block md:hidden text-[12px]" bis_skin_checked="1"><font><font>Most requested</font></font><p><span class="qC_pa"></span><span class="oy8sJ"></span></p></div>
                                 <div className="flex items-start w-full lg:items-center gap-4">
                                     <div className={`checkbox h-6 w-6 rounded-full border-[2px] flex items-center justify-center
                     ${selectedIndex === index ? 'border-black bg-black' : 'border-[#838383] group-hover:border-black'}
