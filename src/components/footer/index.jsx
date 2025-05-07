@@ -1,14 +1,36 @@
+"use client"
 import Image from 'next/image';
-import React from 'react'
-import { FaTwitter } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
+import React, { useEffect, useState } from 'react'
 import PaymentCard from "../../../public/images/footer-cards.svg"
 import { usePathname } from 'next/navigation';
+import { FaTwitter, FaInstagram, FaFacebook, FaSnapchat, FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   const pathname = usePathname();
   const isHomePage = pathname === '/';
+  const [storeSettings, setStoreSettings] = useState(null);
+
+    useEffect(() => {
+      const stored = localStorage.getItem('storeSettings');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          setStoreSettings(parsed);
+        } catch (err) {
+          console.error("Error parsing storeSettings from localStorage:", err);
+        }
+      }
+    }, []);
+
+    const socialLinks = storeSettings?.social_links || {};
+
+    const socialIcons = [
+      { icon: <FaFacebook />, url: socialLinks.facebook },
+      { icon: <FaInstagram />, url: socialLinks.instagram },
+      { icon: <FaSnapchat />, url: socialLinks.snapchat },
+      { icon: <FaTiktok />, url: socialLinks.tiktok },
+      { icon: <FaTwitter />, url: socialLinks.twitter },
+    ];
 
   return (
 
@@ -20,13 +42,19 @@ const Footer = () => {
         <li className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>Contact us</li>
       </ul>
       <ul className='flex flex-wrap justify-center items-center gap-4 mt-6 text-white text-2xl'>
-        <li className='cursor-pointer hover:scale-[1.05] transition-all duration-[0.3s] ease-in-out' ><FaTwitter /></li>
-        <li className='cursor-pointer hover:scale-[1.05] transition-all duration-[0.3s] ease-in-out'><FaInstagram /></li>
-        <li className='cursor-pointer hover:scale-[1.05] transition-all duration-[0.3s] ease-in-out'><FaFacebook /></li>
+        {socialIcons.map((item, index) => (
+          item.url ? (
+            <li key={index} className='cursor-pointer hover:scale-[1.05] transition-all duration-[0.3s] ease-in-out'>
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                {item.icon}
+              </a>
+            </li>
+          ) : null
+        ))}
       </ul>
       <div className="flex flex-wrap gap-4 lg:gap-12 mt-12 justify-center lg:justify-between items-center text-white px-6 lg:px-62">
         <Image src={PaymentCard} alt='payment card' />
-        <p className='text-sm'>Copyright © 2025. By BioNakheel</p>
+        <p className='text-sm'>Copyright © 2025. By {storeSettings?.store_name}</p>
       </div>
     </div>
   )

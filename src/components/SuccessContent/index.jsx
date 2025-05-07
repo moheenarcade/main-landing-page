@@ -102,17 +102,17 @@ const SuccessContent = () => {
 
               <div className="flex items-center justify-between pt-3">
                 <p className='text-[18px] font-[400] text-[#57637a]'>Total amount:</p>
-                <p className='text-[23px] font-[600] text-end'>{orderData.order_total_amount}  {storeSettings.currency_code}</p>
+                <p className='text-[23px] font-[600] text-end'>{orderData?.order_total_amount}  {storeSettings?.currency_code}</p>
               </div>
             </div>
             <div className="flex flex-col lg:flex-row items-center justify-center gap-3 felx-wrap pt-4">
               <div className="flex items-center gap-1">
                 <AiOutlineMail className='text-[#57637a] text-xl' />
-                <p className='text-[#57637a] text-[17px]'>Support@bionakhel.com</p>
+                <p className='text-[#57637a] text-[17px]'>{storeSettings?.store_email}</p>
               </div>
               <div className="flex items-center gap-1">
                 <IoCallOutline className='text-[#57637a] text-xl' />
-                <p className='text-[#57637a] text-[17px]'>+9715084653764</p>
+                <p className='text-[#57637a] text-[17px]'>{storeSettings?.store_mobile}</p>
               </div>
             </div>
           </div>

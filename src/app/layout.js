@@ -6,6 +6,7 @@ import React from "react";
 import "../style/index.css";
 import { usePathname } from "next/navigation";
 import { LanguageProvider } from "../context/LanguageContext";
+import FaviconLoader from "../components/FaviconLoader";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -15,12 +16,14 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head></head>
       <body>
-      <LanguageProvider>
-        {shouldShowHeader && <Header />}
-        {children}
-        <Footer />
-      </LanguageProvider>
+        <FaviconLoader />
+        <LanguageProvider>
+          {shouldShowHeader && <Header />}
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
