@@ -5,6 +5,8 @@ import { getCityState, getSettings } from "../../lib/api";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "../../hooks/useTranslation";
+import { useLanguage } from "../../context/LanguageContext";
+
 
 const getCustomStyles = (formErrors, field) => ({
   control: (provided, state) => ({
@@ -12,8 +14,8 @@ const getCustomStyles = (formErrors, field) => ({
     border: formErrors[field]
       ? "2px solid #f87171"
       : state.isFocused
-      ? "2px solid #1a1a1a"
-      : "2px solid #838383",
+        ? "2px solid #1a1a1a"
+        : "2px solid #838383",
     boxShadow: state.isFocused ? "0 0 0 4px rgba(209, 213, 219, 0.5)" : "none",
     borderRadius: "0.5rem",
     padding: "2px",
@@ -35,6 +37,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
   console.log("Quantity:", selectedQuantity);
   console.log("Total Price:", selectedTotalPrice);
   const { t } = useTranslation();
+  const { language, toggleLanguage } = useLanguage();
   const router = useRouter();
   const [states, setStates] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -112,7 +115,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
       const result = await response.json();
       const cities = result.data.map((city) => ({
         value: city.id,
-        label: city.name?.trim(),
+        label: language === 'ar' ? city.name_ar?.trim() : city.name?.trim(),
       }));
       setCityOptions(cities);
       setSelectedCity(null);
@@ -246,11 +249,11 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
     <div className="form-sec pt-6 lg:pt-12" ref={formContainerRef}>
       <ToastContainer />
       <div className="flex items-center gap-4 mb-4">
-        <div className="border-b-[1px] border-b border-b-[#d6dce9] w-full"></div>
+        <div className="border-b-[1px] border-b-[#d6dce9] w-full"></div>
         <p className="text-center font-[600] text-[20px] md:text-2xl text-[#191e2a] cairo-family whitespace-nowrap">
           {t("Choose_the_appropriate_offer")}
         </p>
-        <div className="border-b-[1px] border-b border-b-[#d6dce9] w-full"></div>
+        <div className="border-b-[1px] border-b-[#d6dce9] w-full"></div>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="mb-3 lg:mb-6" ref={formRefs.fullName}>
@@ -258,11 +261,10 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
             name="fullName"
             value={formValues.fullName}
             onChange={handleInputChange}
-            className={`w-full px-3 py-3 rounded-lg border-2 ${
-              formErrors.fullName ? "border-red-500" : "border-[#838383]"
-            } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg`}
+            className={`w-full px-3 py-3 rounded-lg border-2 ${formErrors.fullName ? "border-red-500" : "border-[#838383]"
+              } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg`}
             type="text"
-            placeholder="Your Full Name"
+            placeholder={t('Your_Full_Name')}
           />
           {formErrors.fullName && (
             <p className="text-red-500 text-sm mt-1">{formErrors.fullName}</p>
@@ -274,17 +276,16 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
             name="email"
             value={formValues.email}
             onChange={handleInputChange}
-            className={`w-full px-3 py-3 rounded-lg border-2 ${
-              formErrors.email ? "border-red-500" : "border-[#838383]"
-            } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg`}
+            className={`w-full px-3 py-3 rounded-lg border-2 ${formErrors.email ? "border-red-500" : "border-[#838383]"
+              } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg`}
             type="email"
-            placeholder="Your Email"
+            placeholder={t('Your_Email')}
           />
           {formErrors.email && (
             <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
           )}
         </div>
-        <div className="mb-3 lg:mb-6 flex flex-col">
+        {/* <div className="mb-3 lg:mb-6 flex flex-col">
           <div className="flex" ref={formRefs.phone}>
             <input
               readOnly
@@ -298,25 +299,52 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
               name="phone"
               value={formValues.phone}
               onChange={handleInputChange}
-              className={`w-full px-3 py-3 rounded-r-lg border-2 ${
-                formErrors.phone ? "border-red-500" : "border-[#838383]"
-              } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg`}
-              placeholder="Your Phone"
+              className={`w-full px-3 py-3 rounded-r-lg border-2 ${formErrors.phone ? "border-red-500" : "border-[#838383]"
+                } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg`}
+              placeholder={t('Your_Phone')}
+            />
+          </div>
+          {formErrors.phone && (
+            <p className="text-red-500 text-sm mt-1">{formErrors.phone}</p>
+          )}
+        </div> */}
+        <div className="mb-3 lg:mb-6 flex flex-col">
+          <div
+            className={`flex ${language === 'ar' ? 'flex-row-reverse' : ''}`}
+            ref={formRefs.phone}
+          >
+            <input
+              readOnly
+              type="tel"
+              name="code"
+              value={`+${settings.mobile_code || ''}`}
+              className={`${language === 'ar' ? "border-l-[2px] border-r-0  rounded-l-lg " : "border-l-0  rounded-r-lg"} w-[60px] border-[#838383] border-[2px]  outline-none text-center items-center`}
+            />
+            <input
+              type="tel"
+              name="phone"
+              value={formValues.phone}
+              onChange={handleInputChange}
+              className={`w-full px-3 py-3 border-2 ${formErrors.phone ? 'border-red-500' : 'border-[#838383]'
+                } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg 
+      ${language === 'ar' ? 'rounded-l-0 rounded-r-lg' : 'rounded-r-lg'}`}
+              placeholder={t('Your_Phone')}
             />
           </div>
           {formErrors.phone && (
             <p className="text-red-500 text-sm mt-1">{formErrors.phone}</p>
           )}
         </div>
+
         <div className="mb-3 lg:mb-6" ref={formRefs.state}>
           <Select
             className="select-state"
             styles={getCustomStyles(formErrors, "state")}
             options={states.map((state) => ({
               value: state.id,
-              label: state.name?.trim(),
+              label: language === 'ar' ? state.name_ar?.trim() : state.name?.trim(),
             }))}
-            placeholder="Select a state"
+            placeholder={t('Select_a_state')}
             value={selectedState}
             onChange={(option) => {
               setSelectedState(option);
@@ -335,7 +363,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
             className="select-zone"
             styles={getCustomStyles(formErrors, "city")}
             options={cityOptions}
-            placeholder="Select a city"
+            placeholder={t('Select_a_city')}
             value={selectedCity}
             onChange={(option) => {
               setSelectedCity(option);
@@ -354,11 +382,10 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
             name="address"
             value={formValues.address}
             onChange={handleInputChange}
-            className={`w-full px-3 py-2 rounded-lg border-2 ${
-              formErrors.address ? "border-red-500" : "border-[#838383]"
-            } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg`}
+            className={`w-full px-3 py-2 rounded-lg border-2 ${formErrors.address ? "border-red-500" : "border-[#838383]"
+              } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg`}
             rows={3}
-            placeholder="Your complete delivery address"
+            placeholder={t('Your_complete_delivery_address')}
           />
           {formErrors.address && (
             <p className="text-red-500 text-sm mt-1">{formErrors.address}</p>
@@ -387,7 +414,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
               }}
               className="w-full lg:w-[50%] cursor-pointer py-2 px-4 bg-transparent hover:text-[#764202] hover:bg-white border-white hover:border-[#764202] border-2 rounded-full text-white text-md sm:text-lg transition-all duration-[0.3s] ease-in-out"
             >
-              Order now and pay upon receipt
+              {t('Order_now_and_pay_upon_receipt')}
             </button>
           </div>
         </div>

@@ -1,9 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useTranslation } from '../../hooks/useTranslation';
 const TOTAL_SECONDS = 12 * 60 * 60; 
 
 export default function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState(TOTAL_SECONDS);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const initializeEndTime = () => {
@@ -47,7 +49,7 @@ export default function CountdownTimer() {
         <div className=" px-4 py-2 rounded-md text-4xl font-bold font-mono shadow-lg">
           {hours}
         </div>
-        <span className="mt-2 text-[12px] uppercase tracking-widest">Hours</span>
+        <span className="mt-2 text-[12px] uppercase tracking-widest">{t('Hours')}</span>
       </div>
 
       <div className="text-5xl font-bold mb-[40px]">:</div>
@@ -57,7 +59,7 @@ export default function CountdownTimer() {
         <div className=" px-4 py-2 rounded-md text-4xl font-bold font-mono shadow-lg">
           {minutes}
         </div>
-        <span className="mt-2 text-[12px] uppercase tracking-widest">Minutes</span>
+        <span className="mt-2 text-[12px] uppercase tracking-widest">{t('Minutes')}</span>
       </div>
 
       <div className="text-5xl font-bold mb-[40px]">:</div>
@@ -67,7 +69,7 @@ export default function CountdownTimer() {
         <div className="px-4 py-2 rounded-md text-4xl font-bold font-mono shadow-lg">
           {seconds}
         </div>
-        <span className="mt-2 text-[12px] uppercase tracking-widest">Seconds</span>
+        <span className="mt-2 text-[12px] uppercase tracking-widest">{t('Seconds')}</span>
       </div>
     </div>
   );

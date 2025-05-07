@@ -92,13 +92,13 @@ const GetInNow = ({ product_sku }) => {
                 <div className="dicousnt-mobile-badge text-white bg-red-600 py-1 px-3 rounded-lg font-[600] block md:hidden">
                   -{discountPercent}%
                 </div>
-                <div className="hidden md:block badges absolute top-[-140px] lg:-top-36 right-6 mx-auto ">
+                <div className={`hidden md:block badges absolute top-[-140px] lg:-top-36  mx-auto ${language === 'ar'? "right-auto left-6" : "right-6"}`}>
                   <p className="pt-12">
-                    <span className="firstLine">GET UP TO</span>
+                    <span className="firstLine">{t('GET_UP_TO')}</span>
                     <br />
                     <span className="secondLine">{discountPercent}%</span>
                     <br />
-                    <span className="thirdLine">Discount</span>
+                    <span className="thirdLine">{t('Discount')}</span>
                     <br />
                   </p>
                 </div>
@@ -145,7 +145,7 @@ const GetInNow = ({ product_sku }) => {
                 {index === 1 && product.discount_prices.length > 1 && (
                   <div className="rPyoc text-[12px]" bis_skin_checked="1">
                     <font>
-                      <font>Most requested</font>
+                      <font>{t('Most_requested')}</font>
                     </font>
                     <p>
                       <span className="qC_pa"></span>
@@ -177,7 +177,7 @@ const GetInNow = ({ product_sku }) => {
                     }
                 `}
                     >
-                      Buy {quantity} - Save {discountPercent}%
+                      {t('Buy')} {quantity} - {t('Save')} {discountPercent}%
                     </p>
                   </div>
                 </div>

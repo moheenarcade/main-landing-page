@@ -9,6 +9,8 @@ import Image from 'next/image';
 import CartImage from "../../../public/images/largebanner2_converted.png"
 import { AiOutlineMail } from "react-icons/ai";
 import { IoCallOutline } from "react-icons/io5";
+import { useTranslation } from "../../hooks/useTranslation";
+
 
 const SuccessContent = () => {
   const searchParams = useSearchParams();
@@ -17,6 +19,7 @@ const SuccessContent = () => {
   const [loading, setLoading] = useState(true);
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
   const [storeSettings, setStoreSettings] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -60,18 +63,18 @@ const SuccessContent = () => {
           <div className="w-full lg:w-[46%] flex flex-col justify-center items-center cairo-family">
             <Image className='w-[80px] lg:w-[40px]' width={200} height={200} src="https://assets.lightfunnels.com/account-26241/images_library/7ed790b9-ca39-43f6-a1d2-651104f0490c.svg" alt="product image" />
             <h1 className='text-[#191e2a] text-[26px] lg:text-[40px] font-[600] text-center py-3'>
-              Your order has been successfully registered, thank you for choosing our store.
+              {t('Your_order_has_been_successfully')}
             </h1>
             <p className='text-center text-[#57637a] font-[500] text-[18px] lg:text-[20px]'>
-              We are happy that you chose our store and we hope that your experience with our products is very special. We will contact you to confirm and ship your order.
+             {t('We_are_happy_that_you_chose_our')}
             </p>
             <p className='text-[22px] lg:text-[20px] text-red-500 text-center font-[700] lg:font-[500] py-4'>
-              Please answer the phone to enjoy a quick shopping experience  ⚠️
+             {t('Please_answer_the_phone_to_enjoy_a_quick_shopping_experience')}
             </p>
           </div>
           <div className="w-full lg:w-[46%] pt-12">
             <div className="w-full border-[1px] border-[#f0f2f6] rounded-lg px-6 lg:px-8 py-6 lg:py-12 shadow-lg bg-white cairo-family">
-              <p className='bg-[#f4f5f7] py-2 rounded-lg px-2 text-[#191e2a] font-[600] lg:font-[700] text-[18px]'>Application Summary</p>
+              <p className='bg-[#f4f5f7] py-2 rounded-lg px-2 text-[#191e2a] font-[600] lg:font-[700] text-[18px]'>{t('Application_Summary')}</p>
               <div className="py-6 flex justify-between items-center">
                 <div className="flex items-center text-[#191e2a] gap-4">
                   <Image className='w-[68px] h-[68px] border-[1px] border-[#d6dce9] rounded-[6px] overflow-hidden shadow-lg object-cover' src={CartImage} alt="cart image" />
@@ -80,14 +83,14 @@ const SuccessContent = () => {
                 <p className='text-[16px] font-[600] uppercase text-end'>{orderData.order_total_amount}  {storeSettings.currency_code}</p>
               </div>
 
-              <p className='bg-[#f4f5f7] py-2 rounded-lg px-2 text-[#191e2a] font-[600] lg:font-[700] text-[18px]'>Invoice Summary</p>
+              <p className='bg-[#f4f5f7] py-2 rounded-lg px-2 text-[#191e2a] font-[600] lg:font-[700] text-[18px]'>{t('Invoice_Summary')}</p>
               <div className="flex items-center justify-between pt-4">
-                <p className='text-[15px] font-[500] text-[#57637a]'>Customer Name</p>
+                <p className='text-[15px] font-[500] text-[#57637a]'>{t('Customer_Name')}</p>
 
                 <p className='text-[16px] font-[600] text-end'>{orderData.customer_name}</p>
               </div>
               <div className="flex items-center justify-between pt-3">
-                <p className='text-[15px] font-[500] text-[#57637a]'>Shipping and handling</p>
+                <p className='text-[15px] font-[500] text-[#57637a]'>{t('Shipping_and_handling')}</p>
                 <p className='text-[16px] font-[600] text-end'>
                   {orderTotal < freeShippingLimit
                     ? `${shippingAmount} ${storeSettings?.currency_code}`
@@ -95,13 +98,13 @@ const SuccessContent = () => {
                 </p>
               </div>
               <div className="flex items-center justify-between pt-3">
-                <p className='text-[15px] font-[500] text-[#57637a]'>Discount coupon</p>
+                <p className='text-[15px] font-[500] text-[#57637a]'>{t('Discount_coupon')}</p>
                 <p className='text-[16px] font-[600] text-end'>N/A</p>
               </div>
               <div className="border-b-[1px] border-b-[#d6dce9] my-3"></div>
 
               <div className="flex items-center justify-between pt-3">
-                <p className='text-[18px] font-[400] text-[#57637a]'>Total amount:</p>
+                <p className='text-[18px] font-[400] text-[#57637a]'>{t('Total_amount')}</p>
                 <p className='text-[23px] font-[600] text-end'>{orderData?.order_total_amount}  {storeSettings?.currency_code}</p>
               </div>
             </div>

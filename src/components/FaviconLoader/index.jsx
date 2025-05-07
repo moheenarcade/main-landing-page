@@ -12,7 +12,6 @@ const FaviconLoader = () => {
             ? parsed.store_favicon
             : `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL_FOT_LOGO || ""}/${parsed.store_favicon}`;
           console.log(fullUrl , "faveiocn")
-          // Direct DOM manipulation
           let link = document.querySelector("link[rel~='icon']");
           if (!link) {
             link = document.createElement('link');

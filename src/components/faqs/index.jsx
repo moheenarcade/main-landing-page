@@ -5,34 +5,18 @@ import { GrDeliver } from "react-icons/gr";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { GiCash } from "react-icons/gi";
 import { useTranslation } from "../../hooks/useTranslation";
-
-
+import { useLanguage } from "../../context/LanguageContext";
 
 const Faqs = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const { t } = useTranslation();
+  const { language } = useLanguage();
+
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const faqs = [
-    {
-      question: "What is your return policy?",
-      answer: "We offer a 7-day return policy from the date of delivery. Items must be unused and in original packaging.",
-    },
-    {
-      question: "Do you offer international shipping?",
-      answer: "Currently, we ship only within the listed countries on our website. More regions will be added soon!",
-    },
-    {
-      question: "How can I track my order?",
-      answer: "Once your order is shipped, you will receive an email with the tracking link.",
-    },
-    {
-      question: "Can I cancel or change my order?",
-      answer: "Yes, you can cancel or modify your order within 1 hour of placing it. Contact support for help.",
-    },
-  ];
+  const faqs = t("faqs");
 
 
   return (
@@ -63,17 +47,17 @@ const Faqs = () => {
       <div className="mt-6 lg:mt-18 flex lg:gap-4 flex-wrap justify-between">
         <div className="flex flex-col items-center lg:border border-gray-200 rounded-lg overflow-hidden lg:shadow-sm p-3 lg:p-6  w-[50%] lg:w-[23%]  2xl:w-[23%]">
           <TiMessages className='text-4xl lg:text-5xl text-[#191e2a] ' />
-          <p className='text-sm lg:text-lg font-[500] text-[#191e2a] text-center cairo-family'>Customer Service</p>
+          <p className='text-sm lg:text-lg font-[500] text-[#191e2a] text-center cairo-family'>{t('Customer_Service')}</p>
         </div>
         <div className="flex flex-col items-center lg:border border-gray-200 rounded-lg overflow-hidden lg:shadow-sm p-3 lg:p-6  w-[50%] lg:w-[23%]  2xl:w-[23%]">
           <GrDeliver className='text-4xl lg:text-5xl' />
-          <p className='text-sm lg:text-lg font-[500] text-center cairo-family'>Free delivery</p>
+          <p className='text-sm lg:text-lg font-[500] text-center cairo-family'>{t('Free_delivery')}</p>
         </div> <div className="flex flex-col items-center lg:border border-gray-200 rounded-lg overflow-hidden lg:shadow-sm p-3 lg:p-6  w-[50%] lg:w-[23%]  2xl:w-[23%]">
           <RiSecurePaymentLine className='text-4xl lg:text-5xl' />
-          <p className='text-sm lg:text-lg font-[500] text-center cairo-family'>100% guarantee</p>
+          <p className='text-sm lg:text-lg font-[500] text-center cairo-family'>100% {t('guarantee')}</p>
         </div> <div className="flex flex-col items-center lg:border border-gray-200 rounded-lg overflow-hidden lg:shadow-sm p-3 lg:p-6  w-[50%] lg:w-[23%]  2xl:w-[23%]">
           <GiCash className='text-4xl lg:text-5xl' />
-          <p className='text-sm lg:text-lg font-[500] text-center cairo-family'>Cash on delivery</p>
+          <p className='text-sm lg:text-lg font-[500] text-center cairo-family'>{t('Cash_on_delivery')}</p>
         </div>
       </div>
     </div>
