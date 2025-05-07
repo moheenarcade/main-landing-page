@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "../../hooks/useTranslation";
 import { useLanguage } from "../../context/LanguageContext";
 
-
 const getCustomStyles = (formErrors, field) => ({
   control: (provided, state) => ({
     ...provided,
@@ -32,10 +31,10 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
   const [selectedCity, setSelectedCity] = useState(null);
   const [cityOptions, setCityOptions] = useState([]);
   const [showStickyButton, setShowStickyButton] = useState(false);
-  console.log(product, "product in form");
-  console.log("Product ID:", product?.product_id);
-  console.log("Quantity:", selectedQuantity);
-  console.log("Total Price:", selectedTotalPrice);
+  // console.log(product, "product in form");
+  // console.log("Product ID:", product?.product_id);
+  // console.log("Quantity:", selectedQuantity);
+  // console.log("Total Price:", selectedTotalPrice);
   const { t } = useTranslation();
   const { language, toggleLanguage } = useLanguage();
   const router = useRouter();
@@ -43,7 +42,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
     fullName: "",
-    email: "",
+    // email: "",
     phone: "",
     address: "",
   });
@@ -54,7 +53,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
 
   const formRefs = {
     fullName: useRef(null),
-    email: useRef(null),
+    // email: useRef(null),
     phone: useRef(null),
     state: useRef(null),
     city: useRef(null),
@@ -157,7 +156,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
 
     const errors = {};
     if (!formValues.fullName.trim()) errors.fullName = "Full name is required";
-    if (!formValues.email.trim()) errors.email = "Email is required";
+    // if (!formValues.email.trim()) errors.email = "Email is required";
     if (!formValues.phone.trim()) {
       errors.phone = "Phone number is required";
     } else if (formValues.phone.length < mobileLength) {
@@ -181,7 +180,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
 
     const payload = {
       customer_name: formValues.fullName,
-      customer_email: formValues.email,
+      // customer_email: formValues.email,
       customer_mobile: `${settings.mobile_code || ""}${formValues.phone}`,
       customer_address: formValues.address,
       customer_city_id: selectedState?.value,
@@ -271,7 +270,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
           )}
         </div>
 
-        <div className="mb-3 lg:mb-6" ref={formRefs.email}>
+        {/* <div className="mb-3 lg:mb-6" ref={formRefs.email}>
           <input
             name="email"
             value={formValues.email}
@@ -284,7 +283,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
           {formErrors.email && (
             <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
           )}
-        </div>
+        </div> */}
         <div className="mb-3 lg:mb-6 flex flex-col">
           <div
             className={`flex ${language === 'ar' ? 'flex-row-reverse' : ''}`}

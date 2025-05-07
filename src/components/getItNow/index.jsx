@@ -6,6 +6,7 @@ import { getProductBySlug } from "../../lib/api";
 import BuyForm from "../buyForm";
 import { useTranslation } from "../../hooks/useTranslation";
 import { useLanguage } from "../../context/LanguageContext";
+import DigitalNumberClock from "../digitalNumberClock"
 
 const GetInNow = ({ product_sku }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -54,16 +55,18 @@ const GetInNow = ({ product_sku }) => {
 
   return (
     <div className="get-it-now-main rounded-xl p-3 lg:p-6 my-0 lg:my-12">
-      <div className="clock-timer relative z-[9999] py-4 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-6 justify-center items-center">
+      <div className="clock-timer relative z-[9999] py-4 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-2 lg:gap-6 justify-center items-center">
+
         <p className="text-[white] text-xl text-center md:text-start lg:text-3xl font-[500]">
           {t("Get_it_now_before_it")}{" "}
         </p>
         <div className="clock-sec">
-          <CountdownTimer
+          {/* <CountdownTimer
             initialHours={0}
             initialMinutes={5}
             initialSeconds={0}
-          />
+          /> */}
+          <DigitalNumberClock targetTime={new Date(Date.now() + 1000 * 60 * 60 * 24)} />
         </div>
       </div>
 
@@ -92,7 +95,7 @@ const GetInNow = ({ product_sku }) => {
                 <div className="dicousnt-mobile-badge text-white bg-red-600 py-1 px-3 rounded-lg font-[600] block md:hidden">
                   -{discountPercent}%
                 </div>
-                <div className={`hidden md:block badges absolute top-[-140px] lg:-top-36  mx-auto ${language === 'ar'? "right-auto left-6" : "right-6"}`}>
+                <div className={`hidden md:block badges absolute top-[-140px] lg:-top-36  mx-auto ${language === 'ar' ? "right-auto left-6" : "right-6"}`}>
                   <p className="pt-12">
                     <span className="firstLine">{t('GET_UP_TO')}</span>
                     <br />
@@ -135,11 +138,10 @@ const GetInNow = ({ product_sku }) => {
                 key={index}
                 onClick={() => setSelectedIndex(index)}
                 className={`group single-price mb-4 cursor-pointer relative flex flex-row justify-between items-center border-[2px] rounded-xl py-5 lg:py-4 px-5 lg:px-8 transition-all duration-[0.3s] ease-in-out
-                ${
-                  selectedIndex === index
+                ${selectedIndex === index
                     ? "border-[#a8620a] bg-gray-100 scale-[1.01]"
                     : "border-[#acb9d2] hover:bg-gray-100 hover:scale-[1.01] hover:border-black"
-                }
+                  }
             `}
               >
                 {index === 1 && product.discount_prices.length > 1 && (
@@ -156,11 +158,10 @@ const GetInNow = ({ product_sku }) => {
                 <div className="flex items-start w-full lg:items-center gap-4">
                   <div
                     className={`checkbox h-6 w-6 rounded-full border-[2px] flex items-center justify-center
-                    ${
-                      selectedIndex === index
+                    ${selectedIndex === index
                         ? "border-[#a8620a] bg-[#a8620a]"
                         : "border-[#acb9d2] group-hover:border-[#191e2a]"
-                    }
+                      }
                 `}
                   >
                     {selectedIndex === index && (
@@ -170,11 +171,10 @@ const GetInNow = ({ product_sku }) => {
                   <div className="">
                     <p
                       className={`text-md text-start md:text-xl font-[600] transition-all
-                    ${
-                      selectedIndex === index
-                        ? "text-[#191e2a]"
-                        : "text-[#191e2a] group-hover:text-[#191e2a]"
-                    }
+                    ${selectedIndex === index
+                          ? "text-[#191e2a]"
+                          : "text-[#191e2a] group-hover:text-[#191e2a]"
+                        }
                 `}
                     >
                       {t('Buy')} {quantity} - {t('Save')} {discountPercent}%
@@ -184,11 +184,10 @@ const GetInNow = ({ product_sku }) => {
                 <div className="block">
                   <div
                     className={`text-sm md:text-xl gap-1 font-[600] lg:gap-0 flex flex-col justify-start md:justify-end italic transition-all
-                ${
-                  selectedIndex === index
-                    ? "text-[#57637a] "
-                    : "text-[#57637a] group-hover:text-[#57637a]"
-                }
+                ${selectedIndex === index
+                        ? "text-[#57637a] "
+                        : "text-[#57637a] group-hover:text-[#57637a]"
+                      }
             `}
                   >
                     <p className="whitespace-nowrap">

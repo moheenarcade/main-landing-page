@@ -274,6 +274,9 @@ body {
     background-position: center center;
 }
 
+
+
+
 @media screen and (max-width: 678px) {
   .get-it-now-main {
     box-shadow: none !important;
