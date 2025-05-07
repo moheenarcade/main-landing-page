@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from "next/image";
+import TopBanner from "../../../public/images/headertop-banner_converted.png";
 
 const HeroBanner = ({ products }) => {
     if (!products || products.length === 0 || !products[0].images || products[0].images.length === 0) {
@@ -10,15 +11,22 @@ const HeroBanner = ({ products }) => {
     const fullImageUrl = `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${imagePath}`;
 
     return (
-        <div className="main-banner">
-            <Image
-                className="w-full h-auto"
-                src={fullImageUrl}
-                alt="main banner"
-                width={1200}
-                height={600}
-            />
-        </div>
+        <>
+            <div className='header-main pt-0 lg:pt-4'>
+                <div className="header-banner w-full">
+                    <Image className='w-full h-auto' src={TopBanner} alt='top banner' />
+                </div>
+            </div>
+            <div className="main-banner">
+                <Image
+                    className="w-full h-auto"
+                    src={fullImageUrl}
+                    alt="main banner"
+                    width={1200}
+                    height={600}
+                />
+            </div>
+        </>
     );
 };
 
