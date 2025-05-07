@@ -116,7 +116,7 @@ const GetInNow = ({ product_sku }) => {
           );
         })()}
 
-      <div className="pt-6 lg:pt-20 text-start lg:text-center">
+      <div className="pt-6 lg:pt-12 text-start lg:text-center">
         <p className="text-[20px] lg:text-3xl font-[800] lg:font-[700] cairo-family">
           {t("To_order_please_fill_in_the_boxes_below")}
         </p>

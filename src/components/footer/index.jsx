@@ -4,13 +4,15 @@ import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import PaymentCard from "../../../public/images/footer-cards.svg"
-
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   return (
 
-    <div className='footer-main pt-8 pb-28 bg-[#191e2a] px-4 2xl:px-20'>
+    <div className={`footer-main pt-8 ${isHomePage ? 'pb-28' : 'pb-8'} bg-[#191e2a] px-4 2xl:px-20`}>
       <ul className='flex flex-wrap items-center gap-4 justify-center text-white'>
         <li className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>Return Terms</li>
         <li className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>Terms of Service</li>
