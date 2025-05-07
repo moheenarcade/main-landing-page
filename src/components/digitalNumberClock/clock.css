@@ -7,7 +7,7 @@
 
 .digit {
   width:45px;
-  height:65px;
+  height:60px;
   margin:0 1px;
   position:relative;
   display:inline-block;
@@ -42,8 +42,10 @@
   border-radius:50%;
   display:inline-block;
   position:relative;
-  top:-35px;
+  top:-25px;
 }
+
+
 
 .digit .segment:nth-child(1) {
   top:10px;
