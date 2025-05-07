@@ -285,29 +285,6 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
             <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
           )}
         </div>
-        {/* <div className="mb-3 lg:mb-6 flex flex-col">
-          <div className="flex" ref={formRefs.phone}>
-            <input
-              readOnly
-              type="tel"
-              name="phone"
-              value={`+${settings.mobile_code || ""}`}
-              className="w-[60px] border-[#838383] border-[2px] border-r-0 rounded-l-lg outline-none text-center items-center"
-            />
-            <input
-              type="tel"
-              name="phone"
-              value={formValues.phone}
-              onChange={handleInputChange}
-              className={`w-full px-3 py-3 rounded-r-lg border-2 ${formErrors.phone ? "border-red-500" : "border-[#838383]"
-                } focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-900 focus:shadow-lg`}
-              placeholder={t('Your_Phone')}
-            />
-          </div>
-          {formErrors.phone && (
-            <p className="text-red-500 text-sm mt-1">{formErrors.phone}</p>
-          )}
-        </div> */}
         <div className="mb-3 lg:mb-6 flex flex-col">
           <div
             className={`flex ${language === 'ar' ? 'flex-row-reverse' : ''}`}
@@ -318,7 +295,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
               type="tel"
               name="code"
               value={`+${settings.mobile_code || ''}`}
-              className={`${language === 'ar' ? "border-l-[2px] border-r-0  rounded-l-lg " : "border-l-0  rounded-r-lg"} w-[60px] border-[#838383] border-[2px]  outline-none text-center items-center`}
+              className={`${language === 'ar' ? "border-l-[2px] border-r-0  rounded-l-lg " : "border-l-lg border-r-0 rounded-l-lg"} w-[60px] border-[#838383] border-[2px]  outline-none text-center items-center`}
             />
             <input
               type="tel"

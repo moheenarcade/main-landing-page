@@ -4,37 +4,49 @@ import React, { useEffect, useState } from 'react'
 import PaymentCard from "../../../public/images/footer-cards.svg"
 import { usePathname } from 'next/navigation';
 import { FaTwitter, FaInstagram, FaFacebook, FaSnapchat, FaTiktok } from "react-icons/fa";
+import { useLanguage } from "../../context/LanguageContext";
 
 const Footer = () => {
   const pathname = usePathname();
   const isHomePage = pathname === '/';
   const [storeSettings, setStoreSettings] = useState(null);
+  const { language, toggleLanguage } = useLanguage();
 
-    useEffect(() => {
-      const stored = localStorage.getItem('storeSettings');
-      if (stored) {
-        try {
-          const parsed = JSON.parse(stored);
-          setStoreSettings(parsed);
-        } catch (err) {
-          console.error("Error parsing storeSettings from localStorage:", err);
-        }
+  useEffect(() => {
+    const stored = localStorage.getItem('storeSettings');
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        setStoreSettings(parsed);
+      } catch (err) {
+        console.error("Error parsing storeSettings from localStorage:", err);
       }
-    }, []);
+    }
+  }, []);
 
-    const socialLinks = storeSettings?.social_links || {};
+  const socialLinks = storeSettings?.social_links || {};
 
-    const socialIcons = [
-      { icon: <FaFacebook />, url: socialLinks.facebook },
-      { icon: <FaInstagram />, url: socialLinks.instagram },
-      { icon: <FaSnapchat />, url: socialLinks.snapchat },
-      { icon: <FaTiktok />, url: socialLinks.tiktok },
-      { icon: <FaTwitter />, url: socialLinks.twitter },
-    ];
+  const socialIcons = [
+    { icon: <FaFacebook />, url: socialLinks.facebook },
+    { icon: <FaInstagram />, url: socialLinks.instagram },
+    { icon: <FaSnapchat />, url: socialLinks.snapchat },
+    { icon: <FaTiktok />, url: socialLinks.tiktok },
+    { icon: <FaTwitter />, url: socialLinks.twitter },
+  ];
 
   return (
 
     <div className={`footer-main pt-8 ${isHomePage ? 'pb-28' : 'pb-8'} bg-[#191e2a] px-4 2xl:px-20`}>
+      <div className="fixed z-[999999] right-0 bottom-[50%]">
+        <button
+          onClick={toggleLanguage}
+          className="text-sm px-2 py-4 font-[600] border rounded-l-lg z-[999999] 
+             backdrop-blur-md bg-black/10 border-white/20 text-black cursor-pointer"
+        >
+          {language === "en" ? "AR" : "EN"}
+        </button>
+
+      </div>
       <ul className='flex flex-wrap items-center gap-4 justify-center text-white'>
         <li className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>Return Terms</li>
         <li className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>Terms of Service</li>

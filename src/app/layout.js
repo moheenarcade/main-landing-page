@@ -1,5 +1,4 @@
 "use client";
-
 import Footer from "../components/footer";
 import Header from "../components/header";
 import React from "react";
@@ -10,7 +9,6 @@ import FaviconLoader from "../components/FaviconLoader";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-
   const hideHeaderPaths = ["/success"];
   const shouldShowHeader = !hideHeaderPaths.includes(pathname);
 
