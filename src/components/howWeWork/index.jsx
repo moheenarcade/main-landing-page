@@ -10,7 +10,7 @@ const HowWeWork = () => {
 
     return (
         <div className='container mx-auto cairo-family px-6 lg:px-20 xl:px-62 lg:mt-[300px] xl:mt-[80px] 2xl:mt-[240px] pb-12 lg:pb-20'>
-            <h3 className='text-3xl lg:text-4xl text-black text-center font-[700] lg:font-[500] mt-4 cairo-family'>{t('How_we_work')}</h3>
+            <h3 className='text-3xl lg:text-4xl text-[#191e2a] text-center font-[700] lg:font-[500] mt-4 cairo-family'>{t('How_we_work')}</h3>
             <p className='text-center text-md lg:text-xl text-[#57637a] pt-2 cairo-family'>{t('To_avoid_any_problems_in_processing')}</p>
 
             <div className="flex flex-wrap justify-center gap-6 lg:gap-12 mt-12">

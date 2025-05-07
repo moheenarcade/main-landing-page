@@ -11,8 +11,8 @@ const BuyFullGurenty = () => {
     return (
         <div className='relative py-12 mx-6'>
             <div className="bg-[#764202] rounded-xl h-[350px] md:h-[430px] xl:h-[350px] absolute z-[-1] w-full"></div>
-            <div className="container pt-12 lg:pt-18 mx-auto px-0 lg:px-20 xl:px-62">
-                <div className="pb-12">
+            <div className="container pt-8 lg:pt-18 mx-auto px-0 lg:px-20 xl:px-62">
+                <div className="pb-8 lg:pb-12">
                     <h2 className='text-[25px] lg:text-lg text-white text-center font-[700] lg:font-normal cairo-family uppercase'>{t('Why_With_Us')} ?</h2>
                     <h3 className='px-12 lg:px-0 text-[25px] lg:text-4xl text-white text-center font-[700] lg:font-[500] lg:mt-4 cairo-family'>{t('Buy_with_full_guarantees')}</h3>
                 </div>

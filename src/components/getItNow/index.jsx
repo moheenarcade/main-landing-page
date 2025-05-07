@@ -54,7 +54,7 @@ const GetInNow = ({ product_sku }) => {
 
   return (
     <div className="get-it-now-main rounded-xl p-3 lg:p-6 my-0 lg:my-12">
-      <div className="clock-timer relative z-[9999] py-6 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-6 justify-center items-center">
+      <div className="clock-timer relative z-[9999] py-4 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-6 justify-center items-center">
         <p className="text-[white] text-xl text-center md:text-start lg:text-3xl font-[500]">
           {t("Get_it_now_before_it")}{" "}
         </p>

@@ -25,7 +25,6 @@ export const getProducts = async (slugs = "") => {
   }
 };
 
-
 export const getProductBySlug = async (slug: string) => {
   try {
     const response = await axios.get(`${baseUrl}/store/product/${slug}`);
@@ -75,6 +74,18 @@ export const getPages = async () => {
   }
 };
 
+export async function getPageBySlug(slug) {
+  try {
+    const response = await fetch(`${baseUrl}/store/page/detail/${slug}`);
+    if (!response.ok) {
+      throw new Error("Page not found");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching page:", error);
+    return null;
+  }
+}
 
 export const getSBanners = async () => {
   try {

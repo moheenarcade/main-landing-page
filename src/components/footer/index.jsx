@@ -5,12 +5,20 @@ import PaymentCard from "../../../public/images/footer-cards.svg"
 import { usePathname } from 'next/navigation';
 import { FaTwitter, FaInstagram, FaFacebook, FaSnapchat, FaTiktok } from "react-icons/fa";
 import { useLanguage } from "../../context/LanguageContext";
+import { getCategories, getPages } from "../../lib/api";
+import { useTranslation } from "../../hooks/useTranslation";
+import Link from 'next/link';
 
 const Footer = () => {
   const pathname = usePathname();
   const isHomePage = pathname === '/';
   const [storeSettings, setStoreSettings] = useState(null);
   const { language, toggleLanguage } = useLanguage();
+
+  const { t } = useTranslation();
+  const [categories, setCategories] = useState([]);
+  const [getAllPages, setGetAllPages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const stored = localStorage.getItem('storeSettings');
@@ -34,6 +42,21 @@ const Footer = () => {
     { icon: <FaTwitter />, url: socialLinks.twitter },
   ];
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getPages();
+        setGetAllPages(data.data || []);
+      } catch (error) {
+        console.error("Failed to fetch categories", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
 
     <div className={`footer-main pt-8 ${isHomePage ? 'pb-28' : 'pb-8'} bg-[#191e2a] px-4 2xl:px-20`}>
@@ -48,10 +71,14 @@ const Footer = () => {
 
       </div>
       <ul className='flex flex-wrap items-center gap-4 justify-center text-white'>
-        <li className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>Return Terms</li>
-        <li className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>Terms of Service</li>
-        <li className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>privacy policy</li>
-        <li className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>Contact us</li>
+      
+        {getAllPages.map((page) => (
+          <li key={page.slug} className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>
+            <Link href={`/${page.slug}`}>
+              {language === 'ar' ? page.title_ar : page.title}
+            </Link>
+          </li>
+        ))}
       </ul>
       <ul className='flex flex-wrap justify-center items-center gap-4 mt-6 text-white text-2xl'>
         {socialIcons.map((item, index) => (
