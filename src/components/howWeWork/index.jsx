@@ -14,7 +14,7 @@ const HowWeWork = () => {
             <p className='text-center text-md lg:text-xl text-[#57637a] pt-2 cairo-family'>{t('To_avoid_any_problems_in_processing')}</p>
 
             <div className="flex flex-wrap justify-center gap-6 lg:gap-12 mt-12">
-                <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full  md:w-[45%]">
+                <div className="work-card flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full  md:w-[45%]">
                     <GiCash className='text-5xl' />
                     <p className='text-xl font-[700] py-2 text-center text-[#191e2a]'>{t('We_ship_the_order_to_you')}
                     </p>
@@ -22,7 +22,7 @@ const HowWeWork = () => {
                         {t('After_confirming_the_order')}
                     </p>
                 </div>
-                <div className="flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full  md:w-[45%]">
+                <div className="work-card flex flex-col items-center border border-gray-200 rounded-lg overflow-hidden shadow-sm p-6 w-full  md:w-[45%]">
                     <GiCash className='text-5xl' />
                     <p className='text-xl font-[700] py-2 text-center text-[#191e2a]'>{t('You_order')}
                     </p>

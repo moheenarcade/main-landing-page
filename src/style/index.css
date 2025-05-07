@@ -264,6 +264,16 @@ body {
   filter: brightness(0.7);
 }
 
+.work-card {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 12px 0px rgba(1, 1, 2, 0.1);
+    border-radius: 10px;
+    background-image: url(https://assets.lightfunnels.com/account-1/images_library/c6e54e24-90fb-4a24-9dfb-531b1fc775fa.Fraghme%208.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 @media screen and (max-width: 678px) {
   .get-it-now-main {
     box-shadow: none !important;
