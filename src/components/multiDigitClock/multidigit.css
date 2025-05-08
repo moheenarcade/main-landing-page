@@ -17,7 +17,7 @@
     margin:0.3vw;
   }
   
-  .block{
+  .clock-sec .block{
     width:2vw;
     height:2vw;
     position:absolute;

@@ -100,9 +100,9 @@ const GetInNow = ({ product_sku }) => {
                     </p>
                   ) : null}
                 </div>
-                <div className="dicousnt-mobile-badge text-white bg-red-600 py-1 px-3 rounded-lg font-[600] block md:hidden">
-                  -{discountPercent}%
-                </div>
+                  <div className="dicousnt-mobile-badge text-white bg-red-600 py-1 px-3 rounded-lg font-[600] block md:hidden">
+                    -{discountPercent}%
+                  </div>
                 <div className={`hidden md:block badges absolute top-[-140px] lg:-top-36  mx-auto ${language === 'ar' ? "right-auto left-6" : "right-6"}`}>
                   <p className="pt-12">
                     <span className="firstLine">{t('GET_UP_TO')}</span>
