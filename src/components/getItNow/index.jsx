@@ -6,7 +6,8 @@ import { getProductBySlug } from "../../lib/api";
 import BuyForm from "../buyForm";
 import { useTranslation } from "../../hooks/useTranslation";
 import { useLanguage } from "../../context/LanguageContext";
-import DigitalNumberClock from "../digitalNumberClock"
+import DigitalNumberClock from "../digitalNumberClock";
+import MultiDigitClock from "../multiDigitClock"
 
 const GetInNow = ({ product_sku }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -54,18 +55,19 @@ const GetInNow = ({ product_sku }) => {
 
   return (
     <div className="get-it-now-main rounded-xl p-3 lg:p-6 my-0 lg:my-12">
-      <div className="clock-timer relative z-[9999] py-4 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-2 lg:gap-6 justify-center items-center">
+      <div className="clock-timer overflow-hidden relative z-[9999] py-4 md:py-6 px-4 lg:px-12 rounded-xl flex flex-col md:flex-row gap-2 lg:gap-6 justify-center items-center">
 
-        <p className="text-[white] text-xl text-center md:text-start lg:text-3xl font-[500]">
+        <p className="text-[white] text-xl md:text-lg text-center md:text-start lg:text-[20px] 2xl:text-3xl font-[500]">
           {t("Get_it_now_before_it")}{" "}
         </p>
-        <div className="clock-sec">
+        <div className="clock-sec w-full md:w-[400px] xl:w-[320px] 2xl:w-[400px] relative ">
           {/* <CountdownTimer
             initialHours={0}
             initialMinutes={5}
             initialSeconds={0}
           /> */}
-          <DigitalNumberClock targetTime={new Date(Date.now() + 1000 * 60 * 60 * 24)} />
+          {/* <DigitalNumberClock targetTime={new Date(Date.now() + 1000 * 60 * 60 * 24)} /> */}
+          <MultiDigitClock />
         </div>
       </div>
 

@@ -62,7 +62,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 1500) {
+      if (window.scrollY >= 1200) {
         setShowStickyButton(true);
       } else {
         setShowStickyButton(false);
