@@ -62,7 +62,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 1900) {
+      if (window.scrollY >= 1500) {
         setShowStickyButton(true);
       } else {
         setShowStickyButton(false);
@@ -245,17 +245,11 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
   };
 
   return (
-    <div className="form-sec pt-6 lg:pt-12" ref={formContainerRef}>
+    <div className="form-sec " ref={formContainerRef}>
       <ToastContainer />
-      <div className="flex items-center gap-4 mb-4">
-        <div className="border-b-[1px] border-b-[#d6dce9] w-full"></div>
-        <p className="text-center font-[600] text-[20px] md:text-2xl text-[#191e2a] cairo-family whitespace-nowrap">
-          {t("Choose_the_appropriate_offer")}
-        </p>
-        <div className="border-b-[1px] border-b-[#d6dce9] w-full"></div>
-      </div>
+
       <form onSubmit={handleSubmit}>
-        <div className="mb-3 lg:mb-6" ref={formRefs.fullName}>
+        <div className="mb-2 lg:mb-3" ref={formRefs.fullName}>
           <input
             name="fullName"
             value={formValues.fullName}
@@ -284,7 +278,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
             <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
           )}
         </div> */}
-        <div className="mb-3 lg:mb-6 flex flex-col">
+        <div className="mb-2 lg:mb-3 flex flex-col">
           <div
             className={`flex ${language === 'ar' ? 'flex-row-reverse' : ''}`}
             ref={formRefs.phone}
@@ -312,7 +306,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
           )}
         </div>
 
-        <div className="mb-3 lg:mb-6" ref={formRefs.state}>
+        <div className="mb-2 lg:mb-3" ref={formRefs.state}>
           <Select
             className="select-state"
             styles={getCustomStyles(formErrors, "state")}
@@ -334,7 +328,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
           )}
         </div>
 
-        <div className="mb-3 lg:mb-6" ref={formRefs.city}>
+        <div className="mb-2 lg:mb-3" ref={formRefs.city}>
           <Select
             className="select-zone"
             styles={getCustomStyles(formErrors, "city")}
@@ -353,7 +347,7 @@ const BuyForm = ({ product, selectedQuantity, selectedTotalPrice }) => {
           )}
         </div>
 
-        <div className="mb-3 lg:mb-6" ref={formRefs.address}>
+        <div className="mb-2 lg:mb-3" ref={formRefs.address}>
           <textarea
             name="address"
             value={formValues.address}

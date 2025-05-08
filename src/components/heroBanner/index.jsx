@@ -12,12 +12,12 @@ const HeroBanner = ({ products }) => {
 
     return (
         <>
-            <div className='header-main pt-0 lg:pt-4'>
+            {/* <div className='header-main pt-0 lg:pt-4'>
                 <div className="header-banner w-full">
                     <Image className='w-full h-auto' src={TopBanner} alt='top banner' />
                 </div>
-            </div>
-            <div className="main-banner">
+            </div> */}
+            <div className="main-banner pt-0 lg:pt-4">
                 <Image
                     className="w-full h-auto"
                     src={fullImageUrl}

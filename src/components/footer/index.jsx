@@ -11,12 +11,10 @@ import Link from 'next/link';
 
 const Footer = () => {
   const pathname = usePathname();
-  const isHomePage = pathname === '/';
+  const isHomePage = pathname === '/' || pathname === '/en' || pathname === '/ar';
   const [storeSettings, setStoreSettings] = useState(null);
   const { language, toggleLanguage } = useLanguage();
-
   const { t } = useTranslation();
-  const [categories, setCategories] = useState([]);
   const [getAllPages, setGetAllPages] = useState([]);
   const [loading, setLoading] = useState(true);
 

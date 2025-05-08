@@ -3,10 +3,14 @@ import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import { getProductBySlug } from "../../lib/api";
 import { useRouter } from 'next/navigation';
+import { useTranslation } from "../../hooks/useTranslation";
+import { useLanguage } from "../../context/LanguageContext";
 
 const LargeBanner = ({ product_sku }) => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
+    const { t } = useTranslation();
+    const { language, toggleLanguage } = useLanguage();
     const router = useRouter();
 
     useEffect(() => {
@@ -25,20 +29,20 @@ const LargeBanner = ({ product_sku }) => {
                 setLoading(false);
             }
         }
-
         if (product_sku) {
             fetchProduct();
         }
     }, [product_sku]);
-
     if (loading || !product) return null;
+
+    const description = language === "ar" ? product.description_ar : product.description;
 
     return (
         <>
             {product.description && (
                 <div
                     className="product-description py-6"
-                    dangerouslySetInnerHTML={{ __html: product.description }}
+                    dangerouslySetInnerHTML={{ __html: description }}
                 />
             )}
         </>

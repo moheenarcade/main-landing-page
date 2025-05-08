@@ -21,7 +21,7 @@ const Faqs = () => {
 
   return (
     <div className=" mx-auto pt-12 lg:pb-8 ">
-      <div className="space-y-4">
+      <div className="space-y-2 lg:space-y-3">
         {faqs.map((faq, index) => (
           <div
             key={index}
