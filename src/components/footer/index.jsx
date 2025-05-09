@@ -29,7 +29,6 @@ const Footer = () => {
       }
     }
   }, []);
-
   const socialLinks = storeSettings?.social_links || {};
 
   const socialIcons = [
@@ -62,7 +61,7 @@ const Footer = () => {
         <button
           onClick={toggleLanguage}
           className="text-sm px-2 py-4 font-[600] border rounded-l-lg z-[999999] 
-             backdrop-blur-md bg-black/10 border-white/20 text-black cursor-pointer"
+             backdrop-blur-sm bg-black/10 border-white/20 text-black cursor-pointer"
         >
           {language === "en" ? "AR" : "EN"}
         </button>
