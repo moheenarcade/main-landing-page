@@ -89,7 +89,7 @@ const Footer = () => {
         ))}
       </ul>
       <div className="flex flex-wrap gap-4 lg:gap-12 mt-12 justify-center lg:justify-between items-center text-white px-6 lg:px-62">
-        <Image src={PaymentCard} alt='payment card' />
+        <Image src={PaymentCard} alt='payment card' unoptimized/>
         <p className='text-sm'>Copyright © 2025. By {storeSettings?.store_name}</p>
       </div>
     </div>

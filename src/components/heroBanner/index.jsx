@@ -18,7 +18,7 @@ const HeroBanner = ({ products }) => {
                 </div>
             </div> */}
             <div className="main-banner pt-0 lg:pt-4">
-                <Image
+                <Image unoptimized
                     className="w-full h-auto"
                     src={fullImageUrl}
                     alt="main banner"

@@ -61,7 +61,7 @@ const SuccessContent = () => {
       <div className="container mx-auto px-6 lg:px-20 xl:px-62">
         <div className="flex justify-between flex-wrap">
           <div className="w-full lg:w-[46%] flex flex-col justify-center items-center cairo-family">
-            <Image className='w-[80px] lg:w-[40px]' width={200} height={200} src="https://assets.lightfunnels.com/account-26241/images_library/7ed790b9-ca39-43f6-a1d2-651104f0490c.svg" alt="product image" />
+            <Image unoptimized className='w-[80px] lg:w-[40px]' width={200} height={200} src="https://assets.lightfunnels.com/account-26241/images_library/7ed790b9-ca39-43f6-a1d2-651104f0490c.svg" alt="product image" />
             <h1 className='text-[#191e2a] text-[26px] lg:text-[40px] font-[600] text-center py-3'>
               {t('Your_order_has_been_successfully')}
             </h1>
@@ -77,7 +77,7 @@ const SuccessContent = () => {
               <p className='bg-[#f4f5f7] py-2 rounded-lg px-2 text-[#191e2a] font-[600] lg:font-[700] text-[18px]'>{t('Application_Summary')}</p>
               <div className="py-6 flex justify-between items-center">
                 <div className="flex items-center text-[#191e2a] gap-4">
-                  <Image className='w-[68px] h-[68px] border-[1px] border-[#d6dce9] rounded-[6px] overflow-hidden shadow-lg object-cover' src={CartImage} alt="cart image" />
+                  <Image unoptimized className='w-[68px] h-[68px] border-[1px] border-[#d6dce9] rounded-[6px] overflow-hidden shadow-lg object-cover' src={CartImage} alt="cart image" />
                   <p className='text-[16px] font-[600] uppercase'>{orderData.order_products[0].product_name} </p>
                 </div>
                 <p className='text-[16px] font-[600] uppercase text-end'>{orderData.order_total_amount}  {storeSettings.currency_code}</p>
