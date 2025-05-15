@@ -25,9 +25,9 @@ export const getProducts = async (slugs = "") => {
   }
 };
 
-export const getProductBySlug = async (slug: string) => {
+export const getProductBySlug = async (sku: string) => {
   try {
-    const response = await axios.get(`${baseUrl}/store/product/${slug}`);
+    const response = await axios.get(`${baseUrl}/store/product/${sku}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching product by slug:", error);

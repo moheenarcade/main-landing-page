@@ -71,7 +71,7 @@ const Footer = () => {
       
         {getAllPages.map((page) => (
           <li key={page.slug} className='cursor-pointer hover:border-b-white border-b-transparent border-b-2 transition-all duration-[0.3s] ease-in-out'>
-            <Link href={`/${page.slug}`}>
+            <Link href={`/page/${page.slug}`}>
               {language === 'ar' ? page.title_ar : page.title}
             </Link>
           </li>
